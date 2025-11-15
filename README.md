@@ -25,12 +25,19 @@ _________________________________________________________________
 Project Structure:
 
 REAL-TIME-MULTILINGUAL-QUERY-HANDLER/
+
 ├── .github/
+
 ├── app.py
+
 ├── docker-compose.yml
+
 ├── Dockerfile
+
 ├── postman_collection.json
+
 ├── README.md
+
 └── requirements.txt
 
 _________________________________________________________________
