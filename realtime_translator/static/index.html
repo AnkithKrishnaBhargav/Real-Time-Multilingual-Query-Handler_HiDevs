@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html><head>
+<title>Real-Time Translator</title>
+<style>
+body { font-family: Arial; margin: 40px; max-width: 800px; }
+textarea { width: 100%; height: 120px; }
+pre { background: #eee; padding: 12px; border-radius: 5px; white-space: pre-wrap; }
+</style>
+</head>
+<body>
+<h1>Real-Time Multilingual Translator</h1>
+<textarea id="input" placeholder="Type in any language..."></textarea><br>
+<label><input type="checkbox" id="back"> Translate reply back</label><br><br>
+<button onclick="sendQuery()">Translate</button>
+
+<h3>Result</h3>
+<pre id="out">No result yet</pre>
+
+<script>
+async function sendQuery(){
+  const text=document.getElementById("input").value;
+  const back=document.getElementById("back").checked;
+  document.getElementById("out").innerText="Working...";
+
+  let res=await fetch("/api/query",{
+    method:"POST",
+    headers:{ "Content-Type":"application/json"},
+    body:JSON.stringify({text, translate_back: back})
+  });
+
+  let j=await res.json();
+  document.getElementById("out").innerText = JSON.stringify(j,null,2);
+}
+</script>
+</body></html>
